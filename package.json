@@ -1,0 +1,23 @@
+{
+  "name": "happybirthdayankuuu",
+  "version": "1.0.0",
+  "description": "A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish.",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve . -l 8000",
+    "dev": "serve . -l 8000",
+    "build": "echo 'Static site build ready for production deployment.'"
+  },
+  "keywords": [
+    "birthday",
+    "website",
+    "ansoya",
+    "ankuuu",
+    "rajnish"
+  ],
+  "author": "Rajnish",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
