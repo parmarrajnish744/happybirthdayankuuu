@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Ansoya (Ankuuu) ❤️ | Rajnish & Ansoya</title>
+    <meta name="description" content="A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Background Audio Track: Agar Tum Saath Ho -->
+    <audio id="bg-audio" src="assets/agar_tum_saath_ho.mp3" loop preload="auto"></audio>
+
+    <!-- Floating Navigation Bar -->
+    <header class="glass-nav">
+        <div class="nav-brand">
+            <span class="heart-icon">❤️</span>
+            <span class="nav-title">Ansoya (Ankuuu) & Rajnish</span>
+        </div>
+        
+        <div class="nav-progress love-progress-wrapper">
+            <div class="love-progress-hearts" id="love-progress-hearts">
+                <button class="love-heart-step active" data-chapter="1" title="01. Surprise 🎁"><span class="step-heart">❤️</span><span class="step-num">1</span></button>
+                <button class="love-heart-step" data-chapter="2" title="02. Our Story ❤️"><span class="step-heart">❤️</span><span class="step-num">2</span></button>
+                <button class="love-heart-step" data-chapter="3" title="03. Reasons 💕"><span class="step-heart">❤️</span><span class="step-num">3</span></button>
+                <button class="love-heart-step" data-chapter="4" title="04. Memories 📸"><span class="step-heart">❤️</span><span class="step-num">4</span></button>
+                <button class="love-heart-step" data-chapter="5" title="05. My Letter 💌"><span class="step-heart">❤️</span><span class="step-num">5</span></button>
+                <button class="love-heart-step" data-chapter="6" title="06. Wishes 🌌"><span class="step-heart">❤️</span><span class="step-num">6</span></button>
+                <button class="love-heart-step" data-chapter="7" title="07. Future ✈️"><span class="step-heart">❤️</span><span class="step-num">7</span></button>
+                <button class="love-heart-step" data-chapter="8" title="08. Balloon Blast 🎈"><span class="step-heart">❤️</span><span class="step-num">8</span></button>
+                <button class="love-heart-step" data-chapter="9" title="09. Surprise 2 🎁"><span class="step-heart">❤️</span><span class="step-num">9</span></button>
+                <button class="love-heart-step" data-chapter="10" title="10. Forever ❤️"><span class="step-heart">❤️</span><span class="step-num">10</span></button>
+            </div>
+            <span class="progress-text" id="nav-progress-text">Chapter 1 of 10</span>
+        </div>
+
+        <div class="nav-actions">
+            <button class="nav-btn" id="audio-toggle-btn" title="Toggle Romantic Ambient Music">
+                <span class="btn-icon">🎵</span>
+                <span class="btn-label" id="audio-status-label">Music: Off</span>
+            </button>
+
+            <button class="nav-btn primary-nav-btn" id="menu-toggle-btn" title="Story Navigation">
+                <span class="btn-icon">📖</span>
+                <span class="btn-label">Chapters</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Story Navigation Drawer / Modal -->
+    <div class="chapters-drawer-overlay" id="chapters-drawer">
+        <div class="chapters-drawer-content glass-card">
+            <div class="drawer-header">
+                <h3>Our Love Story Chapters 💖</h3>
+                <button class="close-btn" id="close-drawer-btn">&times;</button>
+            </div>
+            <div class="chapters-grid">
+                <button class="chapter-card-btn active" data-chapter="1">
+                    <span class="ch-num">01</span>
+                    <span class="ch-title">Surprise 🎁</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="2">
+                    <span class="ch-num">02</span>
+                    <span class="ch-title">Our Story ❤️</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="3">
+                    <span class="ch-num">03</span>
+                    <span class="ch-title">Reasons 💕</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="4">
+                    <span class="ch-num">04</span>
+                    <span class="ch-title">Memories 📸</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="5">
+                    <span class="ch-num">05</span>
+                    <span class="ch-title">My Letter 💌</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="6">
+                    <span class="ch-num">06</span>
+                    <span class="ch-title">Wishes 🌌</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="7">
+                    <span class="ch-num">07</span>
+                    <span class="ch-title">Future ✈️</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="8">
+                    <span class="ch-num">08</span>
+                    <span class="ch-title">Balloon Blast 🎈💥</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="9">
+                    <span class="ch-num">09</span>
+                    <span class="ch-title">Surprise 2 🎁</span>
+                </button>
+                <button class="chapter-card-btn" data-chapter="10">
+                    <span class="ch-num">10</span>
+                    <span class="ch-title">Forever ❤️</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN STORY CONTAINER -->
+    <main class="story-container">
+
+        <!-- PAGE 1 — THE GRAND BIRTHDAY REVEAL 🎂✨ -->
+        <section class="story-page active" id="page-1">
+            <div class="hero-overlay-glow"></div>
+            
+            <!-- Mysterious Initial Card -->
+            <div class="hero-card glass-card reveal-box" id="hero-initial-card">
+                <div class="mysterious-sparkle">✨ ❤️ ✨</div>
+                <h1 class="hero-mysterious-heading">Something Special Is Waiting For You... ❤️</h1>
+                <p class="hero-subtext">A secret journey built with love, just for my favorite person.</p>
+                <button class="glowing-surprise-btn" id="open-surprise-btn">
+                    Open Your Surprise 🎁
+                </button>
+            </div>
+
+            <!-- Animated Revealed Birthday Hero -->
+            <div class="hero-card glass-card revealed-box hidden" id="hero-revealed-card">
+                <div class="floating-hearts-container" id="hero-floating-hearts"></div>
+                <!-- Dynamic Rotating Text Banner -->
+                <div class="rotating-text-banner glass-card">
+                    <span class="rotating-icon">✨</span>
+                    <div class="rotating-text-box" id="hero-rotating-text-box">
+                        <span class="rotate-item active">Happy Birthday Ansoya ❤️</span>
+                        <span class="rotate-item">Happy Birthday My Ankuuu 💖</span>
+                        <span class="rotate-item">Happy Birthday Betu (Ansoya) 🥰</span>
+                        <span class="rotate-item">Happy Birthday Babu (Ankuuu) 💋</span>
+                        <span class="rotate-item">My Everything Ansoya (Ankuuu) ♾️</span>
+                    </div>
+                </div>
+                
+                <!-- Cinematic Name Reveal Container -->
+                <div class="name-reveal-container" id="cinematic-name-reveal">
+                    <span class="reveal-subtitle">✨ Revealing The Name Of My Soulmate... ✨</span>
+                    <div class="name-letters-wrapper" id="name-letters-wrapper">
+                        <span class="reveal-letter" data-index="0">A</span>
+                        <span class="reveal-letter" data-index="1">N</span>
+                        <span class="reveal-letter" data-index="2">S</span>
+                        <span class="reveal-letter" data-index="3">O</span>
+                        <span class="reveal-letter" data-index="4">Y</span>
+                        <span class="reveal-letter" data-index="5">A</span>
+                        <span class="reveal-letter heart-letter" data-index="6">❤️</span>
+                        <span class="reveal-letter" data-index="7">(</span>
+                        <span class="reveal-letter" data-index="8">A</span>
+                        <span class="reveal-letter" data-index="9">N</span>
+                        <span class="reveal-letter" data-index="10">K</span>
+                        <span class="reveal-letter" data-index="11">U</span>
+                        <span class="reveal-letter" data-index="12">U</span>
+                        <span class="reveal-letter" data-index="13">U</span>
+                        <span class="reveal-letter" data-index="14">)</span>
+                    </div>
+                    <div class="final-merged-name hidden" id="final-merged-name">
+                        <h1 class="hero-main-title">Happiest Birthday, My Beautiful <span class="highlight-name glow-burn-text">Ansoya (Ankuuu) ❤️</span></h1>
+                    </div>
+                    <button class="replay-name-btn" id="replay-name-btn" title="Replay Name Reveal">✨ Replay Name Reveal ✨</button>
+                </div>
+                
+                <p class="hero-romantic-quote">“You are my today, my tomorrow, and my forever.”</p>
+                
+                <!-- Secret Easter Egg Heart -->
+                <button class="secret-easter-egg" data-page="1" title="Click me for a secret! ❤️">
+                    <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+                </button>
+
+                <!-- Animated Interactive Birthday Cake -->
+                <div class="cake-wrapper">
+                    <div class="birthday-cake" id="interactive-cake">
+                        <div class="cake-layer layer-top">
+                            <div class="cake-icing"></div>
+                            <div class="candles-row">
+                                <div class="candle lit" data-candle="1">
+                                    <div class="flame"></div>
+                                    <div class="smoke"></div>
+                                </div>
+                                <div class="candle lit" data-candle="2">
+                                    <div class="flame"></div>
+                                    <div class="smoke"></div>
+                                </div>
+                                <div class="candle lit" data-candle="3">
+                                    <div class="flame"></div>
+                                    <div class="smoke"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cake-layer layer-middle"></div>
+                        <div class="cake-layer layer-bottom"></div>
+                        <div class="cake-plate"></div>
+                    </div>
+                    
+                    <button class="blow-candles-btn" id="blow-candles-btn">
+                        🕯️ Click to Blow Out Candles! 🎂
+                    </button>
+                </div>
+
+                <!-- Birthday Countdown -->
+                <div class="birthday-countdown-container">
+                    <div class="countdown-label">Special Celebration Date: <span class="date-tag">28-08-2026</span></div>
+                    <div class="countdown-timer" id="birthday-timer">
+                        <div class="timer-unit"><span id="days">00</span><label>Days</label></div>
+                        <div class="timer-unit"><span id="hours">00</span><label>Hours</label></div>
+                        <div class="timer-unit"><span id="minutes">00</span><label>Mins</label></div>
+                        <div class="timer-unit"><span id="seconds">00</span><label>Secs</label></div>
+                    </div>
+                </div>
+
+                <div class="page-action-row">
+                    <button class="next-chapter-btn primary-glow-btn" data-next="2">
+                        Begin Our Story Journey →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2 — OUR STORY BEGINS 📖❤️ -->
+        <section class="story-page" id="page-2">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 02</span>
+                <h2 class="page-title">Every Beautiful Story Has A Beginning... Ours Started With You ❤️</h2>
+                <p class="page-subtitle">A digital memory diary of our most cherished milestones</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <!-- Timeline Item 1 -->
+                <div class="timeline-card glass-card" data-timeline-id="1">
+                    <div class="timeline-icon">🤝</div>
+                    <div class="timeline-date">Unbreakable Bond</div>
+                    <h3 class="timeline-title">The Hand We Hold ❤️</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/holding_hands_red_thread.jpg" alt="Holding Hands with Sacred Red Thread" class="timeline-photo" id="tl-img-1">
+                    </div>
+                    <p class="timeline-desc">The moment we held hands and tied our hearts together with a sacred promise that will never fade.</p>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-card glass-card" data-timeline-id="2">
+                    <div class="timeline-icon">🌸</div>
+                    <div class="timeline-date">Warm Moments</div>
+                    <h3 class="timeline-title">Our Pure Smiles & Joy 🌸</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_smiling_selfie.jpg" alt="Our Sweet Smiles Together" class="timeline-photo" id="tl-img-2">
+                    </div>
+                    <p class="timeline-desc">Whenever I look at your radiant smile, all my worries disappear into pure happiness and comfort.</p>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-card glass-card" data-timeline-id="3">
+                    <div class="timeline-icon">😜</div>
+                    <div class="timeline-date">Cute Mischief</div>
+                    <h3 class="timeline-title">Playful Moments & Teasing You 😜</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_peek_selfie.jpg" alt="Playful Teasing Selfie" class="timeline-photo" id="tl-img-3">
+                    </div>
+                    <p class="timeline-desc">Peeking into your frame, teasing you, and making you laugh is secretly the highlight of my days.</p>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-card glass-card" data-timeline-id="4">
+                    <div class="timeline-icon">👟</div>
+                    <div class="timeline-date">Cinema Dates</div>
+                    <h3 class="timeline-title">Movie Dates & Matching Steps 👟🍿</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_sneakers_theater.jpg" alt="Matching Sneakers in Movie Theater" class="timeline-photo" id="tl-img-4">
+                    </div>
+                    <p class="timeline-desc">Kicking back at our favorite movie dates, matching our steps side-by-side as we walk life's journey together.</p>
+                </div>
+
+                <!-- Timeline Item 5 (LOCKED MEMORY) -->
+                <div class="timeline-card glass-card locked-memory-card" data-timeline-id="5" id="locked-memory-1">
+                    <div class="lock-overlay" id="lock-overlay-1">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">🔒</span>
+                        </div>
+                        <h3>Secret Memory Sealed 🔐</h3>
+                        <p>A cozy night cuddle memory is kept safe here...</p>
+                        <button class="unlock-memory-btn" data-target="locked-memory-1">
+                            Unlock Next Memory ❤️
+                        </button>
+                    </div>
+                    <div class="timeline-card-content">
+                        <div class="timeline-icon">🌙</div>
+                        <div class="timeline-date">Forever & Always</div>
+                        <h3 class="timeline-title">Cozy Cuddles & Celestial Wishes 🌙✨</h3>
+                        <div class="timeline-photo-box">
+                            <img src="assets/images/couple_theater_cuddle.jpg" alt="Cozy Cuddle in Movie Theater" class="timeline-photo" id="tl-img-5">
+                        </div>
+                        <p class="timeline-desc">Snuggled close under the stars and theater lights. You are my home, my peace, and my forever love.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 6 (NEW) -->
+                <div class="timeline-card glass-card" data-timeline-id="6">
+                    <div class="timeline-icon">💖</div>
+                    <div class="timeline-date">Rainbow & Flowers</div>
+                    <h3 class="timeline-title">Cute Emojis & Filter Magic 🌸💕</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_filter_hearts.jpg" alt="Cute Emojis & Hearts Filter Selfie" class="timeline-photo" id="tl-img-6">
+                    </div>
+                    <p class="timeline-desc">Surrounded by bright flowers, hearts, and cute filters — your adorable face makes my entire world light up!</p>
+                </div>
+
+                <!-- Timeline Item 7 (NEW) -->
+                <div class="timeline-card glass-card" data-timeline-id="7">
+                    <div class="timeline-icon">🌅</div>
+                    <div class="timeline-date">Golden Hour</div>
+                    <h3 class="timeline-title">Warm Bokeh Smiles 🌅✨</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_warm_smile.jpg" alt="Warm Bokeh Smiles Selfie" class="timeline-photo" id="tl-img-7">
+                    </div>
+                    <p class="timeline-desc">Under warm golden bokeh lights, seeing you smile so brightly is my daily dose of sunshine.</p>
+                </div>
+
+                <!-- Timeline Item 8 (NEW) -->
+                <div class="timeline-card glass-card" data-timeline-id="8">
+                    <div class="timeline-icon">🌸</div>
+                    <div class="timeline-date">Sweet Togetherness</div>
+                    <h3 class="timeline-title">Traditional Floral Cuddles 🌸💙</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_floral_traditional.jpg" alt="Traditional Floral Outfit Selfie" class="timeline-photo" id="tl-img-8">
+                    </div>
+                    <p class="timeline-desc">Dressed up in traditional floral patterns, holding you close and treasuring every quiet, romantic moment.</p>
+                </div>
+
+                <!-- Timeline Item 9 (LOCKED MEMORY) -->
+                <div class="timeline-card glass-card locked-memory-card" data-timeline-id="9" id="locked-memory-2">
+                    <div class="lock-overlay" id="lock-overlay-2">
+                        <div class="lock-icon-wrapper">
+                            <span class="lock-icon">🔒</span>
+                        </div>
+                        <h3>Secret Vibe Locked 🔐</h3>
+                        <p>Unlock to reveal our black hearts aesthetic vibe...</p>
+                        <button class="unlock-memory-btn" data-target="locked-memory-2">
+                            Unlock Next Memory ❤️
+                        </button>
+                    </div>
+                    <div class="timeline-card-content">
+                        <div class="timeline-icon">🖤</div>
+                        <div class="timeline-date">Cool Vibe</div>
+                        <h3 class="timeline-title">Floating Black Hearts Vibe 🖤✨</h3>
+                        <div class="timeline-photo-box">
+                            <img src="assets/images/couple_black_hearts.jpg" alt="Black Hearts Filter Selfie" class="timeline-photo" id="tl-img-9">
+                        </div>
+                        <p class="timeline-desc">Floating black hearts framing our faces — no filter in the world could capture how deep my love is for you.</p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 10 (NEW) -->
+                <div class="timeline-card glass-card" data-timeline-id="10">
+                    <div class="timeline-icon">👽</div>
+                    <div class="timeline-date">Silly Fun</div>
+                    <h3 class="timeline-title">Goofy Alien Cinema Cuddles 👽🍿</h3>
+                    <div class="timeline-photo-box">
+                        <img src="assets/images/couple_alien_fun.jpg" alt="Alien Filter Cinema Selfie" class="timeline-photo" id="tl-img-10">
+                    </div>
+                    <p class="timeline-desc">Lying back together with silly alien face filters, laughing endlessly — being goofy with you is true love!</p>
+                </div>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="2" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="3">
+                    Discover 10 Reasons Why I Love You 💕 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 3 — 10 THINGS I LOVE ABOUT YOU 💕✨ -->
+        <section class="story-page" id="page-3">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 03</span>
+                <h2 class="page-title">10 Reasons Why You Are So Special To Me ❤️</h2>
+                <p class="page-subtitle">Tap each card to reveal what makes my heart skip a beat</p>
+            </div>
+
+            <div class="reasons-grid">
+                <!-- 1 -->
+                <div class="reason-card glass-card" data-reason="1">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">01</span>
+                            <span class="reason-emoji">😊</span>
+                            <h3>Your Beautiful Smile</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>Every time you smile, my entire world lights up. Your smile has the power to fix even my hardest days!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="reason-card glass-card" data-reason="2">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">02</span>
+                            <span class="reason-emoji">😤❤️</span>
+                            <h3>Your Cute Anger</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>Even when you get angry or pout, you look ridiculously cute. I secretly love teasing you just to see that adorable face!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="reason-card glass-card" data-reason="3">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">03</span>
+                            <span class="reason-emoji">🫶</span>
+                            <h3>Your Caring Nature</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>The soft, gentle way you care for me and check up on everyone around you shows how pure your heart is.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="reason-card glass-card" data-reason="4">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">04</span>
+                            <span class="reason-emoji">💭</span>
+                            <h3>The Way You Understand Me</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>You know what I’m feeling before I even say a word. Having someone who understands my soul is the greatest gift.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="reason-card glass-card" data-reason="5">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">05</span>
+                            <span class="reason-emoji">🎶</span>
+                            <h3>Your Voice</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>Listening to your voice is my favorite comfort melody. Just hearing you say my name makes everything alright.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="reason-card glass-card" data-reason="6">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">06</span>
+                            <span class="reason-emoji">🥹</span>
+                            <h3>Your Cuteness</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>You don’t even try, yet you do the sweetest little things that make me fall in love with you all over again!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="reason-card glass-card" data-reason="7">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">07</span>
+                            <span class="reason-emoji">💪</span>
+                            <h3>Your Strength</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>Your kindness, resilience, and inner grace inspire me every single day to be a better person.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="reason-card glass-card" data-reason="8">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">08</span>
+                            <span class="reason-emoji">🤪</span>
+                            <h3>Your Crazy Side</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>Our goofy midnight laughs, weird conversations, and unmatched craziness that only we truly get!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="reason-card glass-card" data-reason="9">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">09</span>
+                            <span class="reason-emoji">✨</span>
+                            <h3>Every Little Thing About You</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>From your laugh to your habits, your eyes, and your expressions — I cherish every single detail of you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="reason-card glass-card" data-reason="10">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <span class="reason-num">10</span>
+                            <span class="reason-emoji">❤️</span>
+                            <h3>Simply... You</h3>
+                            <span class="tap-hint">Tap to flip ✨</span>
+                        </div>
+                        <div class="card-back">
+                            <span class="reason-heart">💖</span>
+                            <p>Because there is no one else like you in the entire universe. You are my one and only Ansoya (Ankuuu) ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="3" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+
+            <div class="reasons-bottom-note">
+                <p>“Still counting... because there are infinitely more reasons ❤️♾️”</p>
+            </div>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="4">
+                    Open Memory Gallery 📸 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 4 — OUR MEMORY GALLERY & QUOTE POPUPS 📸🌹 -->
+        <section class="story-page" id="page-4">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 04</span>
+                <h2 class="page-title">Some Moments Become Memories... You Made Them Beautiful ❤️</h2>
+                <p class="page-subtitle">Interactive Love Quotes & Polaroid Scrapbook — Tap any Quote Button or Polaroid to Pop Up the Image!</p>
+            </div>
+
+            <div class="memory-quote-floating">
+                “With You, Even Ordinary Days Become My Favourite Memories ❤️”
+            </div>
+
+            <!-- INTERACTIVE QUOTE BUTTONS SHOWCASE (ONE BUTTON CLICK = ONE IMAGE POP UP) -->
+            <div class="quote-buttons-container glass-card">
+                <div class="quote-section-header">
+                    <span class="quote-badge">✨ Interactive Quote Popups ✨</span>
+                    <h3 class="quote-section-title">Tap Any Quote Button To Pop Up Its Romantic Image 💖</h3>
+                    <p class="quote-section-sub">Each button is crafted with a special quote — click to pop up the image & memory!</p>
+                </div>
+
+                <div class="quote-buttons-grid">
+                    <!-- Quote Button 1 -->
+                    <button class="quote-popup-btn" data-photo-idx="0">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">🌸 Emojis & Hearts</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“You bring all the bright colors, sweet flowers, and rainbows into my world ❤️”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 2 -->
+                    <button class="quote-popup-btn" data-photo-idx="1">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">🌅 Golden Hour Joy</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“Your radiant smile is my daily dose of sunshine and pure warmth ☀️💖”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 3 -->
+                    <button class="quote-popup-btn" data-photo-idx="2">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">🌸 Floral Cuddles</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“In your eyes and in your arms, I have found my home forever 🏡❤️”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 4 -->
+                    <button class="quote-popup-btn" data-photo-idx="3">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">🖤 Black Hearts Vibe</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“You stole my heart from day one, and I'll love you for a million lifetimes 🖤♾️”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 5 (LOCKED MEMORY) -->
+                    <div class="quote-popup-btn locked-memory-card" id="locked-memory-3">
+                        <div class="lock-overlay" id="lock-overlay-3">
+                            <div class="lock-icon-wrapper">
+                                <span class="lock-icon">🔒</span>
+                            </div>
+                            <h3>Secret Goofy Vibe Locked 🔐</h3>
+                            <p>Unlock to reveal our goofy alien cinema memory...</p>
+                            <button class="unlock-memory-btn" data-target="locked-memory-3">
+                                Unlock Next Memory ❤️
+                            </button>
+                        </div>
+                        <button class="quote-card-inner" data-photo-idx="4" style="background:none; border:none; text-align:left; width:100%; color:inherit; cursor:pointer;">
+                            <div class="btn-top-row">
+                                <span class="quote-tag">👽 Goofy Cinema Night</span>
+                                <span class="pop-badge">📸 Pop Up Photo</span>
+                            </div>
+                            <p class="btn-quote-text">“We might be goofy aliens, but we are perfect soulmates in our magical world 🤪❤️”</p>
+                            <div class="btn-bottom-row">
+                                <span class="btn-action-label">Click for Image Popup ✨</span>
+                                <span class="btn-arrow">➔</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- Quote Button 6 -->
+                    <button class="quote-popup-btn" data-photo-idx="5">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">🤝 Sacred Red Thread</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“Wrapped around my fingers, your hand is my favorite place in the world 🔴❤️”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 7 -->
+                    <button class="quote-popup-btn" data-photo-idx="6">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">😊 Pure Radiant Joy</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“Whenever I look at your radiant smile, all my worries disappear into pure bliss 🌸”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 8 -->
+                    <button class="quote-popup-btn" data-photo-idx="7">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">😜 Playful Tease</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“Peeking into your frame & stealing your heart — you are my favorite mischief 😜❤️”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 9 -->
+                    <button class="quote-popup-btn" data-photo-idx="8">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">👟 Matching Steps</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“Side by side, step by step — walking into every adventure together 🍿✨”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+
+                    <!-- Quote Button 10 -->
+                    <button class="quote-popup-btn" data-photo-idx="9">
+                        <div class="btn-top-row">
+                            <span class="quote-tag">🌙 Theater Cuddles</span>
+                            <span class="pop-badge">📸 Pop Up Photo</span>
+                        </div>
+                        <p class="btn-quote-text">“Snuggled close under starry lights — you are my peace and my forever home 🌙❤️”</p>
+                        <div class="btn-bottom-row">
+                            <span class="btn-action-label">Click for Image Popup ✨</span>
+                            <span class="btn-arrow">➔</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- POLAROID SCRAPBOOK GALLERY GRID -->
+            <div class="polaroid-gallery-header">
+                <h3>Our Full Memory Polaroid Collection 📷✨</h3>
+            </div>
+
+            <div class="polaroid-gallery">
+                <!-- Polaroid 1 -->
+                <div class="polaroid-card" data-memory="1" data-photo-idx="0">
+                    <div class="tape-sticker top-left"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_filter_hearts.jpg" alt="Cute Emojis & Hearts Selfie" id="gal-img-1">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Filter Magic</span>
+                        <h4>Cute Emojis & Hearts 🌸💕</h4>
+                        <p>You fill my world with sweet flowers, hearts & happiness.</p>
+                    </div>
+                    <span class="heart-sticker">💖</span>
+                </div>
+
+                <!-- Polaroid 2 -->
+                <div class="polaroid-card" data-memory="2" data-photo-idx="1">
+                    <div class="tape-sticker top-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_warm_smile.jpg" alt="Warm Bokeh Smiles Selfie" id="gal-img-2">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Golden Hour</span>
+                        <h4>Warm Golden Smile 🌅✨</h4>
+                        <p>Your radiant smile is my daily sunshine & comfort.</p>
+                    </div>
+                    <span class="heart-sticker">☀️</span>
+                </div>
+
+                <!-- Polaroid 3 -->
+                <div class="polaroid-card" data-memory="3" data-photo-idx="2">
+                    <div class="tape-sticker top-left"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_floral_traditional.jpg" alt="Traditional Floral Outfit Selfie" id="gal-img-3">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Sweet Cuddles</span>
+                        <h4>Floral Traditional Love 🌸💙</h4>
+                        <p>In your arms, I have found my home forever.</p>
+                    </div>
+                    <span class="heart-sticker">🌺</span>
+                </div>
+
+                <!-- Polaroid 4 -->
+                <div class="polaroid-card" data-memory="4" data-photo-idx="3">
+                    <div class="tape-sticker top-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_black_hearts.jpg" alt="Black Hearts Filter Selfie" id="gal-img-4">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Cool Vibe</span>
+                        <h4>Black Hearts Filter 🖤✨</h4>
+                        <p>Floating black hearts & my forever favorite person.</p>
+                    </div>
+                    <span class="heart-sticker">🖤</span>
+                </div>
+
+                <!-- Polaroid 5 -->
+                <div class="polaroid-card" data-memory="5" data-photo-idx="4">
+                    <div class="tape-sticker top-left"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_alien_fun.jpg" alt="Alien Filter Cinema Selfie" id="gal-img-5">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Silly Fun</span>
+                        <h4>Goofy Alien Cuddles 👽🍿</h4>
+                        <p>Laughing at silly alien filters together at movie dates.</p>
+                    </div>
+                    <span class="heart-sticker">👽</span>
+                </div>
+
+                <!-- Polaroid 6 -->
+                <div class="polaroid-card" data-memory="6" data-photo-idx="5">
+                    <div class="tape-sticker top-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/holding_hands_red_thread.jpg" alt="Holding Hands with Red Thread" id="gal-img-6">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Forever Promise</span>
+                        <h4>Promised Hand In Hand 🤝❤️</h4>
+                        <p>Wrapped around my fingers, your hand is my home.</p>
+                    </div>
+                    <span class="heart-sticker">🔴</span>
+                </div>
+
+                <!-- Polaroid 7 -->
+                <div class="polaroid-card" data-memory="7" data-photo-idx="6">
+                    <div class="tape-sticker top-left"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_smiling_selfie.jpg" alt="Smiling Couple Selfie" id="gal-img-7">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Happy Times</span>
+                        <h4>Pure Joy & Smiles 😊💖</h4>
+                        <p>Seeing you happy is my greatest reward in life.</p>
+                    </div>
+                    <span class="heart-sticker">✨</span>
+                </div>
+
+                <!-- Polaroid 8 -->
+                <div class="polaroid-card" data-memory="8" data-photo-idx="7">
+                    <div class="tape-sticker top-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_peek_selfie.jpg" alt="Peeking Couple Selfie" id="gal-img-8">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Playful Vibes</span>
+                        <h4>My Favorite Tease 📸😜</h4>
+                        <p>Every silly moment with you brings pure joy.</p>
+                    </div>
+                    <span class="heart-sticker">😜</span>
+                </div>
+
+                <!-- Polaroid 9 -->
+                <div class="polaroid-card" data-memory="9" data-photo-idx="8">
+                    <div class="tape-sticker top-left"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_sneakers_theater.jpg" alt="Matching Sneakers in Cinema" id="gal-img-9">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Movie Night</span>
+                        <h4>Matching Shoes & Theater 👟🎬</h4>
+                        <p>Side by side, step by step into every adventure.</p>
+                    </div>
+                    <span class="heart-sticker">🍿</span>
+                </div>
+
+                <!-- Polaroid 10 -->
+                <div class="polaroid-card" data-memory="10" data-photo-idx="9">
+                    <div class="tape-sticker top-right"></div>
+                    <div class="polaroid-img-wrapper">
+                        <img src="assets/images/couple_theater_cuddle.jpg" alt="Cozy Cuddle in Cinema" id="gal-img-10">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="date-tag">Theater Cuddle</span>
+                        <h4>Cozy Cinema Cuddles 🌙✨</h4>
+                        <p>Snuggled close under starry lights — my peace.</p>
+                    </div>
+                    <span class="heart-sticker">🌙</span>
+                </div>
+            </div>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="5">
+                    Read A Letter From My Heart 💌 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 5 — A LETTER FROM MY HEART 💌 -->
+        <section class="story-page" id="page-5">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 05</span>
+                <h2 class="page-title">For The Most Beautiful Person In My Life... ❤️</h2>
+                <p class="page-subtitle">A digital love letter sealed with my entire heart</p>
+            </div>
+
+            <div class="envelope-container">
+                <!-- 3D Sealed Envelope -->
+                <div class="envelope-wrapper" id="envelope-wrapper">
+                    <div class="envelope-back"></div>
+                    <div class="envelope-paper glass-card" id="envelope-paper">
+                        <div class="letter-content">
+                            <div class="letter-header">
+                                <span class="letter-date">August 28, 2026</span>
+                                <h3>Dearest Ansoya (Ankuuu) ❤️</h3>
+                            </div>
+                            <div class="letter-body">
+                                <p>From the moment you entered my life, everything changed for the better. You brought color to my quietest days and warmth to my heart that I never knew I needed.</p>
+
+                                <p><strong>What You Mean To Me:</strong> You aren't just my girlfriend; you are my best friend, my confidante, my biggest motivation, and my happiest place on earth.</p>
+
+                                <p><strong>Why I Am Grateful:</strong> Thank you for understanding me when words fail, for supporting my dreams, and for loving me with such gentleness and grace.</p>
+
+                                <p><strong>My Birthday Wish For You:</strong> On your special day, I wish you endless happiness, boundless success, good health, and smiles that light up every room you walk into.</p>
+
+                                <p class="letter-closing">No matter where life takes us, I hope I always get to celebrate your smile. Happy Birthday, My Love ❤️</p>
+                            </div>
+                            <div class="letter-signature">
+                                <span>Forever Yours,</span>
+                                <h4>Rajnish ❤️</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="envelope-cover"></div>
+                    <div class="envelope-flap" id="envelope-flap">
+                        <div class="wax-seal" id="wax-seal">
+                            <span>A & R</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="open-letter-btn primary-glow-btn" id="open-letter-btn">
+                    Open My Letter 💌
+                </button>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="5" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="6">
+                    Enter Wish Universe 🌌 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 6 — THE BIRTHDAY WISH UNIVERSE 🌌💖 -->
+        <section class="story-page universe-theme" id="page-6">
+            <div class="page-header">
+                <span class="chapter-badge galaxy-badge">Chapter 06</span>
+                <h2 class="page-title universe-title">If I Could Give You The Universe... I Still Wouldn't Think It's Enough ❤️🌌</h2>
+                <p class="page-subtitle universe-subtitle">Tap the shining stars in our heart constellation to unlock cosmic birthday wishes</p>
+            </div>
+
+            <div class="universe-container">
+                <div class="constellation-canvas-wrapper">
+                    <!-- Interactive Constellation Stars -->
+                    <div class="constellation-heart">
+                        <button class="cosmic-star star-1" data-wish-id="1" title="Tap Star Wish">
+                            <span class="star-glow">✨</span>
+                            <span class="star-label">Smile</span>
+                        </button>
+                        <button class="cosmic-star star-2" data-wish-id="2" title="Tap Star Wish">
+                            <span class="star-glow">🌟</span>
+                            <span class="star-label">Dreams</span>
+                        </button>
+                        <button class="cosmic-star star-3" data-wish-id="3" title="Tap Star Wish">
+                            <span class="star-glow">⭐</span>
+                            <span class="star-label">Happiness</span>
+                        </button>
+                        <button class="cosmic-star star-4" data-wish-id="4" title="Tap Star Wish">
+                            <span class="star-glow">💫</span>
+                            <span class="star-label">Our Love</span>
+                        </button>
+                        <button class="cosmic-star star-5" data-wish-id="5" title="Tap Star Wish">
+                            <span class="star-glow">✨</span>
+                            <span class="star-label">Beauty</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="universe-instruction">
+                    <p>💫 Click all glowing stars to illuminate our constellation!</p>
+                </div>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="6" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="7">
+                    Explore Our Future Bucket List ✈️ →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 7 — OUR FUTURE BUCKET LIST ✈️💕 -->
+        <section class="story-page" id="page-7">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 07</span>
+                <h2 class="page-title">More Memories Are Still Waiting For Us... ❤️</h2>
+                <p class="page-subtitle">Our shared romantic dream checklist — check off our future adventures!</p>
+            </div>
+
+            <div class="bucket-progress-wrapper glass-card">
+                <div class="progress-info">
+                    <span>Adventures Ready: <strong id="bucket-count">0 of 7</strong></span>
+                </div>
+                <div class="bucket-bar-bg">
+                    <div class="bucket-bar-fill" id="bucket-progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="bucket-list-container">
+                <div class="journey-curved-road"></div>
+
+                <!-- Bucket Item 1 -->
+                <div class="bucket-card glass-card" data-bucket-id="1">
+                    <div class="bucket-icon">✈️</div>
+                    <div class="bucket-details">
+                        <h3>Travel Together ✈️</h3>
+                        <p>Exploring new beaches, historic cities, and magical places around the world side by side.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+
+                <!-- Bucket Item 2 -->
+                <div class="bucket-card glass-card" data-bucket-id="2">
+                    <div class="bucket-icon">🌅</div>
+                    <div class="bucket-details">
+                        <h3>Watch A Sunset 🌅</h3>
+                        <p>Sitting peacefully together on a hill or beach, watching golden skies melt into twilight.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+
+                <!-- Bucket Item 3 -->
+                <div class="bucket-card glass-card" data-bucket-id="3">
+                    <div class="bucket-icon">🚗</div>
+                    <div class="bucket-details">
+                        <h3>Long Night Drives 🚗</h3>
+                        <p>Playing our favorite acoustic playlist, window rolled down, driving into quiet starry roads.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+
+                <!-- Bucket Item 4 -->
+                <div class="bucket-card glass-card" data-bucket-id="4">
+                    <div class="bucket-icon">🎢</div>
+                    <div class="bucket-details">
+                        <h3>More Crazy Adventures 🎢</h3>
+                        <p>Theme park rollercoasters, spontaneous road trips, and fun silly adventures together.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+
+                <!-- Bucket Item 5 -->
+                <div class="bucket-card glass-card" data-bucket-id="5">
+                    <div class="bucket-icon">🎂</div>
+                    <div class="bucket-details">
+                        <h3>Celebrate More Birthdays 🎂</h3>
+                        <p>Being by your side to blow out candle after candle for decades to come.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+
+                <!-- Bucket Item 6 -->
+                <div class="bucket-card glass-card" data-bucket-id="6">
+                    <div class="bucket-icon">📸</div>
+                    <div class="bucket-details">
+                        <h3>Create Thousands Of Memories 📸</h3>
+                        <p>Filling entire photo albums with our smiles, travel tickets, and heartwarming candid moments.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+
+                <!-- Bucket Item 7 -->
+                <div class="bucket-card glass-card" data-bucket-id="7">
+                    <div class="bucket-icon">✨</div>
+                    <div class="bucket-details">
+                        <h3>Achieve Our Dreams Together ✨</h3>
+                        <p>Supporting each other's career goals and building our dream future together.</p>
+                    </div>
+                    <button class="bucket-check-btn">Let's Do It!</button>
+                </div>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="7" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+
+            <div class="bucket-bottom-note">
+                <p>“This Is Not The End Of Our Story... This Is Only The Beginning ❤️”</p>
+            </div>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="8">
+                    Enter Balloon Blast & Wishes 🎈💥 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 8 — BALLOON BLAST & MULTIPLE ROTATING WISHES 🎈💥✨ -->
+        <section class="story-page" id="page-8">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 08</span>
+                <h2 class="page-title">Balloon Blast Extravaganza & Love Nicknames 🎈💥❤️</h2>
+                <p class="page-subtitle">Pop the floating birthday balloons to blast wishes & watch magical rotating declarations of love!</p>
+            </div>
+
+            <!-- MULTIPLE ROTATING TEXT CARD SHOWCASE -->
+            <div class="rotating-card-showcase glass-card">
+                <div class="card-glow-aurora"></div>
+                <div class="showcase-badge">✨ Multi-Text Rotating Love Box ✨</div>
+
+                <div class="large-rotating-stage" id="large-rotating-stage">
+                    <div class="rotating-phrase-item active" data-index="0">
+                        <span class="phrase-icon">💖</span>
+                        <h2 class="phrase-text">Happy Birthday Ansoya ❤️</h2>
+                        <p class="phrase-sub">Ansoya, you are the most precious part of my life.</p>
+                    </div>
+                    <div class="rotating-phrase-item" data-index="1">
+                        <span class="phrase-icon">🥰</span>
+                        <h2 class="phrase-text">Happy Birthday My Ankuuu 💖</h2>
+                        <p class="phrase-sub">Forever my cutest, sweetest, most favorite pet name & soulmate!</p>
+                    </div>
+                    <div class="rotating-phrase-item" data-index="2">
+                        <span class="phrase-icon">💋</span>
+                        <h2 class="phrase-text">Happy Birthday Betu (Ansoya) 💋</h2>
+                        <p class="phrase-sub">Sending you infinite hugs, kisses, and love today.</p>
+                    </div>
+                    <div class="rotating-phrase-item" data-index="3">
+                        <span class="phrase-icon">♾️</span>
+                        <h2 class="phrase-text">My Everything Ansoya (Ankuuu) ♾️</h2>
+                        <p class="phrase-sub">My past, my present, my future, and my whole heart.</p>
+                    </div>
+                </div>
+
+                <div class="phrase-controls">
+                    <button class="phrase-control-btn" id="prev-phrase-btn" title="Previous Phrase">◀ Previous</button>
+                    <div class="phrase-dots" id="phrase-dots">
+                        <span class="dot active" data-idx="0"></span>
+                        <span class="dot" data-idx="1"></span>
+                        <span class="dot" data-idx="2"></span>
+                        <span class="dot" data-idx="3"></span>
+                    </div>
+                    <button class="phrase-control-btn" id="next-phrase-btn" title="Next Phrase">Next ▶</button>
+                </div>
+            </div>
+
+            <!-- INTERACTIVE BALLOON BLAST SCENE -->
+            <div class="balloon-scene-container glass-card">
+                <div class="scene-header">
+                    <h3>Interactive Balloon Popping Party 🎈💥</h3>
+                    <p>Tap/click any balloon floating on the stage to pop it and reveal secret birthday surprises!</p>
+                </div>
+
+                <div class="balloon-scoreboard">
+                    <div class="score-badge">
+                        <span class="badge-label">Balloons Blasted</span>
+                        <span class="badge-val" id="balloon-pop-count">0 🎈</span>
+                    </div>
+                    <div class="score-badge">
+                        <span class="badge-label">Wishes Discovered</span>
+                        <span class="badge-val" id="wishes-found-count">0 / 10 💌</span>
+                    </div>
+                </div>
+
+                <div class="balloon-actions-bar">
+                    <button class="balloon-action-btn primary-glow-btn" id="spawn-balloons-btn">
+                        🎈 Spawn 10 Balloons
+                    </button>
+                    <button class="balloon-action-btn blast-all-btn" id="blast-all-btn">
+                        💥 BLAST ALL BALLOONS!
+                    </button>
+                    <button class="balloon-action-btn secondary-btn" id="reset-balloons-btn">
+                        🔄 Refresh Stage
+                    </button>
+                </div>
+
+                <!-- Interactive Floating Balloon Stage -->
+                <div class="balloon-stage" id="balloon-stage">
+                    <div class="stage-instructions">
+                        <span>✨ Balloons are floating up! Tap to BLAST! 💥</span>
+                    </div>
+                </div>
+
+                <!-- Balloon Wish Toast Message Display -->
+                <div class="balloon-wish-toast hidden" id="balloon-wish-toast">
+                    <div class="toast-sparkle">✨ 🎈 ✨</div>
+                    <h4 id="toast-title">Balloon Blasted! 💥</h4>
+                    <p id="toast-msg">"You are my absolute favorite!"</p>
+                </div>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="8" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+
+            <div class="page-action-row">
+                <button class="next-chapter-btn primary-glow-btn" data-next="9">
+                    Unlock Next Surprise ⏳🎁 →
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 9 — THE COUNTDOWN TO YOUR NEXT ADVENTURE ⏳🎁 -->
+        <section class="story-page" id="page-9">
+            <div class="page-header">
+                <span class="chapter-badge">Chapter 09</span>
+                <h2 class="page-title">One More Surprise Is Waiting... 👀❤️</h2>
+                <p class="page-subtitle">A special locked gift box packed with magic and love</p>
+            </div>
+
+            <div class="gift-box-stage">
+                <div class="gift-box-wrapper" id="interactive-gift-box">
+                    <div class="gift-lid" id="gift-lid">
+                        <div class="ribbon-bow">🎀</div>
+                    </div>
+                    <div class="gift-body">
+                        <div class="gift-ribbon-vertical"></div>
+                        <div class="gift-ribbon-horizontal"></div>
+                    </div>
+                    <div class="gift-glow-effect"></div>
+                </div>
+
+                <button class="open-gift-btn glowing-surprise-btn" id="open-gift-btn">
+                    Click When You're Ready 🎁
+                </button>
+            </div>
+
+            <!-- Revealed Gift Content -->
+            <div class="revealed-surprise-card glass-card hidden" id="revealed-surprise-card">
+                <div class="surprise-sparkle">✨ 🎁 ✨</div>
+                <h3 class="gift-reveal-heading">Your Special Birthday Gift Box! ❤️🎁</h3>
+                
+                <!-- Gift Box Image Showcase -->
+                <div class="gift-image-card-container">
+                    <div class="gift-image-frame">
+                        <img src="assets/images/birthday_gift_box.jpg" alt="Luxury Birthday Gift Hamper for Ansoya (Ankuuu)" class="gift-hamper-photo" id="gift-hamper-photo">
+                        <div class="gift-photo-overlay">
+                            <span class="zoom-hint-badge">🔍 Click to Expand Photo</span>
+                        </div>
+                    </div>
+                    <span class="gift-image-caption">🎁 Luxury Birthday Gift Box Curated for My Dearest Ansoya (Ankuuu) ❤️</span>
+                </div>
+
+                <div class="gift-hamper-details">
+                    <p class="gift-hamper-intro">
+                        A handpicked luxury birthday hamper box packed with elegance, beauty, and romantic sparkle just for you! 💖
+                    </p>
+                    
+                    <div class="gift-contents-grid">
+                        <div class="gift-content-item">
+                            <span class="item-icon">💅</span>
+                            <span class="item-text">2-Minute Press-On Nails Set</span>
+                        </div>
+                        <div class="gift-content-item">
+                            <span class="item-icon">💎</span>
+                            <span class="item-text">12-Month Birthstone Earrings</span>
+                        </div>
+                        <div class="gift-content-item">
+                            <span class="item-icon">🦋</span>
+                            <span class="item-text">Golden Butterfly Necklace & Earrings</span>
+                        </div>
+                        <div class="gift-content-item">
+                            <span class="item-icon">🎀</span>
+                            <span class="item-text">Aesthetic Hair Clips & Bow</span>
+                        </div>
+                        <div class="gift-content-item">
+                            <span class="item-icon">✨</span>
+                            <span class="item-text">Silky Satin Scrunchie with Beads</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="voucher-box">
+                    <span class="voucher-title">VIP Birthday Ticket 🎟️</span>
+                    <p>Valid for: 1000+ Unlimited Date Nights & Lifetime Love</p>
+                </div>
+                <button class="next-chapter-btn primary-glow-btn" data-next="10">
+                    See Your Final Message →
+                </button>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="9" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+        </section>
+
+        <!-- PAGE 10 — FINAL FOREVER MESSAGE ❤️♾️ -->
+        <section class="story-page final-theme" id="page-10">
+            <div class="final-cinematic-container">
+                
+                <div class="typewriter-sequence" id="typewriter-sequence">
+                    <p class="typewriter-line" data-delay="500">Hey Ansoya (Ankuuu)...</p>
+                    <p class="typewriter-line" data-delay="2500">Today Is Not Just Your Birthday...</p>
+                    <p class="typewriter-line" data-delay="4800">It Is The Day Someone Very Special Came Into This World...</p>
+                    <p class="typewriter-line" data-delay="7200">And Somehow...</p>
+                    <p class="typewriter-line" data-delay="9500">You Became One Of The Most Beautiful Parts Of Mine ❤️</p>
+                    
+                    <button class="skip-typewriter-btn" id="skip-typewriter-btn">✨ Show Final Message Instantly ❤️ ✨</button>
+                </div>
+
+                <div class="final-grand-reveal hidden" id="final-grand-reveal">
+                    <div class="infinite-heart-glowing">❤️</div>
+                    
+                    <h1 class="final-main-title">HAPPY BIRTHDAY, MY BEAUTIFUL ANSOYA (ANKUUU) ❤️🎂</h1>
+                    
+                    <p class="final-wish-quote">
+                        “Ansoya, I Hope Your Day Is As Beautiful, Crazy, Sweet And Special As You Are.”
+                    </p>
+
+                    <div class="thank-you-list glass-card">
+                        <p>✨ Thank You For Every Smile, Ansoya.</p>
+                        <p>💖 Thank You For Every Memory We Share, My Ankuuu.</p>
+                        <p>🌹 Thank You For Being You, Ansoya.</p>
+                        <p>♾️ And Please Ansoya (Ankuuu)... Never Stop Being My Favourite Person ❤️</p>
+                    </div>
+
+                    <div class="final-signature-box">
+                        <span>With All My Love, Dedicated To My Ansoya (Ankuuu) ❤️</span>
+                        <h2>Rajnish ❤️</h2>
+                    </div>
+
+                    <div class="final-actions-row">
+                        <button class="replay-story-btn primary-glow-btn" id="replay-story-btn">
+                            Replay Our Story ❤️ 🔄
+                        </button>
+                        <button class="fireworks-btn nav-btn" id="fireworks-btn">
+                            🎆 Burst Fireworks!
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secret Easter Egg Heart -->
+            <button class="secret-easter-egg" data-page="10" title="Click me for a secret! ❤️">
+                <span class="egg-heart">❤️</span><span class="egg-sparkle">✨</span>
+            </button>
+        </section>
+
+    </main>
+
+    <!-- 2. ELEGANT MINI MUSIC PLAYER (FIXED BOTTOM) -->
+    <div class="mini-music-player glass-card" id="mini-music-player">
+        <div class="disc-icon" id="mini-disc-icon">🎵</div>
+        <div class="player-info">
+            <span class="player-label">Our Song ❤️</span>
+            <span class="player-title">Agar Tum Saath Ho 💖</span>
+        </div>
+        <div class="sound-wave-bars" id="mini-sound-waves">
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+            <span class="wave-bar"></span>
+        </div>
+        <button class="mini-play-btn" id="mini-play-btn" title="Play Our Song ❤️">
+            <span class="play-icon" id="mini-play-icon">▶</span>
+        </button>
+    </div>
+
+    <!-- 1. SECRET EASTER EGG POPUP MODAL -->
+    <div class="easter-egg-modal-overlay" id="easter-egg-modal">
+        <div class="easter-egg-modal-content glass-card">
+            <button class="modal-close-btn" id="close-egg-modal">&times;</button>
+            <div class="egg-modal-header">
+                <span class="floating-modal-heart">❤️</span>
+                <span class="sparkle-stars">✨ 💖 ✨</span>
+            </div>
+            <h2 class="egg-modal-title burn-font-text">
+                You Found My Secret...<br>
+                Just Like You Found A Special Place In My Heart ❤️
+            </h2>
+            <p class="egg-modal-sub">
+                Every corner of this universe has a hidden message of love, crafted specially for you, Ansoya (Ankuuu).
+            </p>
+            <button class="egg-modal-claim-btn primary-glow-btn" id="claim-egg-btn">
+                Keep My Heart Forever ❤️
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL: Star Cosmic Wish Popup -->
+    <div class="modal-overlay" id="wish-modal">
+        <div class="modal-card glass-card">
+            <span class="modal-close" id="wish-modal-close">&times;</span>
+            <div class="modal-icon">🌌 ✨</div>
+            <h3 id="wish-modal-title">Star Wish Unlocked</h3>
+            <p id="wish-modal-body">May your life be blessed with endless happiness!</p>
+            <button class="primary-glow-btn" id="wish-modal-ok">Keep Wishing 💫</button>
+        </div>
+    </div>
+
+    <!-- MODAL: Memory & Quote Lightbox Popup Modal -->
+    <div class="modal-overlay" id="lightbox-modal">
+        <div class="modal-card glass-card lightbox-card">
+            <span class="modal-close" id="lightbox-modal-close">&times;</span>
+            <div class="lightbox-content-grid">
+                <div class="lightbox-img-column">
+                    <div class="lightbox-img-wrapper">
+                        <img src="" alt="Memory preview" id="lightbox-img">
+                        <div class="lightbox-sparkle-glow"></div>
+                    </div>
+                </div>
+                <div class="lightbox-info-column">
+                    <div class="lightbox-header-tags">
+                        <span class="lightbox-date" id="lightbox-date">Tag</span>
+                        <span class="lightbox-count-badge" id="lightbox-count-badge">1 of 10</span>
+                    </div>
+                    <h3 id="lightbox-title">Memory Title</h3>
+                    
+                    <div class="lightbox-quote-box glass-card">
+                        <span class="quote-heart-icon">💖</span>
+                        <p id="lightbox-quote">"Romantic Quote..."</p>
+                    </div>
+
+                    <p id="lightbox-desc" class="lightbox-desc-text">Memory description...</p>
+                    <span class="lightbox-location" id="lightbox-location">📍 Captured with Love by Rajnish</span>
+
+                    <div class="lightbox-nav-controls">
+                        <button class="lightbox-nav-btn" id="lightbox-prev-btn">◀ Previous</button>
+                        <button class="lightbox-nav-btn primary-glow-btn" id="lightbox-next-btn">Next Photo ▶</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Main JavaScript Logic -->
+    <script src="script.js"></script>
+</body>
+</html>
