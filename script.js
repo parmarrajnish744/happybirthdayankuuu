@@ -29,12 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function initAudio() {
         if (!audioCtx) {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
-            audioCtx = new AudioContext();
+            if (AudioContext) {
+                audioCtx = new AudioContext();
+            }
         }
         if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume();
+            audioCtx.resume().catch(e => console.log('Audio resume error:', e));
         }
     }
+
+    // Unlock audio context automatically on any user gesture (Android & iOS)
+    function unlockAudioOnInteraction() {
+        initAudio();
+        const bgAudio = document.getElementById('bg-audio');
+        if (state.musicPlaying && bgAudio && bgAudio.paused) {
+            bgAudio.play().catch(e => console.log('Audio autoplay blocked:', e));
+        }
+    }
+    window.addEventListener('touchstart', unlockAudioOnInteraction, { passive: true, once: true });
+    window.addEventListener('click', unlockAudioOnInteraction, { passive: true, once: true });
 
     // Gentle Romantic Arpeggio Music Synthesizer (Fallback)
     const romanticNotes = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23, 392.00, 493.88];
@@ -111,55 +124,69 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sound FX: Chime
     function playSoundChime() {
         if (!audioCtx) return;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.5);
+        try {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+            osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.5);
+        } catch(e) {}
     }
 
     // Sound FX: Pop / Flip
     function playSoundPop() {
         if (!audioCtx) return;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.1);
+        try {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        } catch(e) {}
     }
 
-    document.getElementById('audio-toggle-btn').addEventListener('click', toggleMusic);
+    const audioToggleBtn = document.getElementById('audio-toggle-btn');
+    if (audioToggleBtn) audioToggleBtn.addEventListener('click', toggleMusic);
 
     // ==========================================
     // 3. BACKGROUND CANVAS PARTICLE SYSTEM
     // ==========================================
     const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
     
+    let isTabActive = true;
+    document.addEventListener('visibilitychange', () => {
+        isTabActive = !document.hidden;
+    });
+
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
     function resizeCanvas() {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        if (!canvas) return;
+        const dpr = Math.min(window.devicePixelRatio || 1, isMobileDevice ? 1.5 : 2);
         width = window.innerWidth;
         height = window.innerHeight;
         canvas.width = width * dpr;
         canvas.height = height * dpr;
         canvas.style.width = width + 'px';
         canvas.style.height = height + 'px';
-        ctx.scale(dpr, dpr);
+        if (ctx) ctx.scale(dpr, dpr);
     }
-    let width, height;
-    resizeCanvas();
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    if (canvas) resizeCanvas();
 
     window.addEventListener('resize', resizeCanvas);
 
@@ -174,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reset() {
             this.x = Math.random() * width;
             this.y = height + 20;
-            this.size = Math.random() * 14 + 8;
+            this.size = Math.random() * (isMobileDevice ? 10 : 14) + 6;
             this.speedY = Math.random() * 1.5 + 0.5;
             this.speedX = Math.sin(Math.random() * Math.PI) * 0.8;
             this.opacity = Math.random() * 0.6 + 0.2;
@@ -186,6 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.y < -20) this.reset();
         }
         draw() {
+            if (!ctx) return;
             ctx.save();
             ctx.globalAlpha = this.opacity;
             ctx.fillStyle = this.color;
@@ -213,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.opacity -= 0.015;
         }
         draw() {
+            if (!ctx) return;
             ctx.save();
             ctx.globalAlpha = Math.max(0, this.opacity);
             ctx.fillStyle = this.color;
@@ -223,18 +252,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Init Floating Hearts
-    for (let i = 0; i < 35; i++) {
+    // Init Floating Hearts (reduced particle count on mobile for smooth performance)
+    const particleCount = isMobileDevice ? 18 : 35;
+    for (let i = 0; i < particleCount; i++) {
         particles.push(new HeartParticle());
     }
 
-    function spawnConfettiBurst(x, y, count = 60) {
+    function spawnConfettiBurst(x, y, count = (isMobileDevice ? 30 : 60)) {
         for (let i = 0; i < count; i++) {
             confetti.push(new ConfettiParticle(x, y));
         }
     }
 
     function animateParticles() {
+        if (!ctx) return;
+        if (!isTabActive) {
+            requestAnimationFrame(animateParticles);
+            return;
+        }
         ctx.clearRect(0, 0, width, height);
 
         // Update & draw hearts
