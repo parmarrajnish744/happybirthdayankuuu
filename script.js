@@ -148,13 +148,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.scale(dpr, dpr);
+    }
+    let width, height;
+    resizeCanvas();
 
-    window.addEventListener('resize', () => {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-    });
+    window.addEventListener('resize', resizeCanvas);
 
     // Particle Array
     const particles = [];

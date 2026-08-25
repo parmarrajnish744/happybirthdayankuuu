@@ -2,10 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Ansoya (Ankuuu) ❤️ | Rajnish & Ansoya</title>
-    <meta name="description" content="A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
     
+    <!-- Primary SEO Meta Tags -->
+    <title>Happy Birthday Ansoya (Ankuuu) ❤️ | Special Surprise by Rajnish</title>
+    <meta name="title" content="Happy Birthday Ansoya (Ankuuu) ❤️ | Special Surprise by Rajnish">
+    <meta name="description" content="A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish. Explore 10 chapters of cherished memories, wishes, sweet letters, interactive games, and surprises!">
+    <meta name="keywords" content="Happy Birthday Ansoya, Ankuuu, Birthday wish website, Birthday surprise for Ansoya, Rajnish and Ansoya, Romantic Birthday Surprise, Digital Birthday Gift, Ankuuu Birthday, Ansoya Birthday 2026">
+    <meta name="author" content="Rajnish">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="theme-color" content="#0d0614">
+
+    <!-- Mobile & PWA Web App Settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ankuuu Birthday Surprise">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://happybirthdayankuuu.pages.dev/">
+
+    <!-- Open Graph / Facebook / WhatsApp SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://happybirthdayankuuu.pages.dev/">
+    <meta property="og:title" content="Happy Birthday Ansoya (Ankuuu) ❤️ | Special Surprise by Rajnish">
+    <meta property="og:description" content="A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish.">
+    <meta property="og:image" content="assets/images/couple_smiling_selfie.jpg">
+    <meta property="og:site_name" content="Happy Birthday Ansoya (Ankuuu)">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://happybirthdayankuuu.pages.dev/">
+    <meta name="twitter:title" content="Happy Birthday Ansoya (Ankuuu) ❤️ | Special Surprise by Rajnish">
+    <meta name="twitter:description" content="A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish.">
+    <meta name="twitter:image" content="assets/images/couple_smiling_selfie.jpg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,41 +46,70 @@
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- JSON-LD Structured Data Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Happy Birthday Ansoya (Ankuuu)",
+      "url": "https://happybirthdayankuuu.pages.dev/",
+      "description": "A romantic, cinematic digital birthday surprise website crafted with love for Ansoya (Ankuuu) by Rajnish.",
+      "inLanguage": "en",
+      "creator": {
+        "@type": "Person",
+        "name": "Rajnish"
+      },
+      "about": {
+        "@type": "Person",
+        "name": "Ansoya (Ankuuu)"
+      }
+    }
+    </script>
 </head>
 <body>
 
     <!-- Particle Background Canvas -->
-    <canvas id="particle-canvas"></canvas>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
     <!-- Background Audio Track: Agar Tum Saath Ho -->
     <audio id="bg-audio" src="assets/agar_tum_saath_ho.mp3" loop preload="auto"></audio>
 
     <!-- Floating Navigation Bar -->
-    <header class="glass-nav">
+    <header class="glass-nav" role="banner">
         <div class="nav-brand">
-            <span class="heart-icon">❤️</span>
-            <span class="nav-title">Ansoya (Ankuuu) & Rajnish</span>
+            <span class="heart-icon" aria-hidden="true">❤️</span>
+            <span class="nav-title">Ansoya (Ankuuu) &amp; Rajnish</span>
         </div>
         
         <div class="nav-progress love-progress-wrapper">
-            <div class="love-progress-hearts" id="love-progress-hearts">
-                <button class="love-heart-step active" data-chapter="1" title="01. Surprise 🎁"><span class="step-heart">❤️</span><span class="step-num">1</span></button>
-                <button class="love-heart-step" data-chapter="2" title="02. Our Story ❤️"><span class="step-heart">❤️</span><span class="step-num">2</span></button>
-                <button class="love-heart-step" data-chapter="3" title="03. Reasons 💕"><span class="step-heart">❤️</span><span class="step-num">3</span></button>
-                <button class="love-heart-step" data-chapter="4" title="04. Memories 📸"><span class="step-heart">❤️</span><span class="step-num">4</span></button>
-                <button class="love-heart-step" data-chapter="5" title="05. My Letter 💌"><span class="step-heart">❤️</span><span class="step-num">5</span></button>
-                <button class="love-heart-step" data-chapter="6" title="06. Wishes 🌌"><span class="step-heart">❤️</span><span class="step-num">6</span></button>
-                <button class="love-heart-step" data-chapter="7" title="07. Future ✈️"><span class="step-heart">❤️</span><span class="step-num">7</span></button>
-                <button class="love-heart-step" data-chapter="8" title="08. Balloon Blast 🎈"><span class="step-heart">❤️</span><span class="step-num">8</span></button>
-                <button class="love-heart-step" data-chapter="9" title="09. Surprise 2 🎁"><span class="step-heart">❤️</span><span class="step-num">9</span></button>
-                <button class="love-heart-step" data-chapter="10" title="10. Forever ❤️"><span class="step-heart">❤️</span><span class="step-num">10</span></button>
+            <div class="love-progress-hearts" id="love-progress-hearts" role="navigation" aria-label="Story Chapters">
+                <button class="love-heart-step active" data-chapter="1" title="01. Surprise 🎁" aria-label="Chapter 1: Surprise"><span class="step-heart">❤️</span><span class="step-num">1</span></button>
+                <button class="love-heart-step" data-chapter="2" title="02. Our Story ❤️" aria-label="Chapter 2: Our Story"><span class="step-heart">❤️</span><span class="step-num">2</span></button>
+                <button class="love-heart-step" data-chapter="3" title="03. Reasons 💕" aria-label="Chapter 3: Reasons"><span class="step-heart">❤️</span><span class="step-num">3</span></button>
+                <button class="love-heart-step" data-chapter="4" title="04. Memories 📸" aria-label="Chapter 4: Memories"><span class="step-heart">❤️</span><span class="step-num">4</span></button>
+                <button class="love-heart-step" data-chapter="5" title="05. My Letter 💌" aria-label="Chapter 5: My Letter"><span class="step-heart">❤️</span><span class="step-num">5</span></button>
+                <button class="love-heart-step" data-chapter="6" title="06. Wishes 🌌" aria-label="Chapter 6: Wishes"><span class="step-heart">❤️</span><span class="step-num">6</span></button>
+                <button class="love-heart-step" data-chapter="7" title="07. Future ✈️" aria-label="Chapter 7: Future"><span class="step-heart">❤️</span><span class="step-num">7</span></button>
+                <button class="love-heart-step" data-chapter="8" title="08. Balloon Blast 🎈" aria-label="Chapter 8: Balloon Blast"><span class="step-heart">❤️</span><span class="step-num">8</span></button>
+                <button class="love-heart-step" data-chapter="9" title="09. Surprise 2 🎁" aria-label="Chapter 9: Surprise 2"><span class="step-heart">❤️</span><span class="step-num">9</span></button>
+                <button class="love-heart-step" data-chapter="10" title="10. Forever ❤️" aria-label="Chapter 10: Forever"><span class="step-heart">❤️</span><span class="step-num">10</span></button>
             </div>
             <span class="progress-text" id="nav-progress-text">Chapter 1 of 10</span>
         </div>
 
         <div class="nav-actions">
-            <button class="nav-btn" id="audio-toggle-btn" title="Toggle Romantic Ambient Music">
+            <button class="nav-btn" id="audio-toggle-btn" title="Toggle Romantic Ambient Music" aria-label="Toggle Romantic Ambient Music">
                 <span class="btn-icon">🎵</span>
+                <span class="btn-label" id="audio-status-label">Music: Off</span>
+            </button>
+
+            <button class="nav-btn primary-nav-btn" id="menu-toggle-btn" title="Story Navigation" aria-label="Open Chapters Menu">
+                <span class="btn-icon">📖</span>
+                <span class="btn-label">Chapters</span>
+            </button>
+        </div>
+    </header>
                 <span class="btn-label" id="audio-status-label">Music: Off</span>
             </button>
 
